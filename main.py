@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 
 st.title("Find Related Singers")
-st.markdown("Enter a artist's name and this app will display related artists using Spotify API")
+st.markdown("Enter an artist's name and this app will display related artists using Spotify API")
 st.text('________________________________________________________________________________________')
 spotify_token = st.text_input('Enter Spotify Token')
 
