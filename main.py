@@ -2,14 +2,20 @@ import streamlit as st
 import requests
 import json
 
-st.title("Find Related Singers")
-st.markdown("Enter an artist's name and this app will display related artists using Spotify API")
+st.title("One-Click Spotify Playlist Creator")
+st.subheader("Create a Spotify playlist with top tracks of any singer/band")
+
+
+st.markdown("""
+* Enter the details below and click the button that prompts you to create a playlist.
+* You need Spotify developer account to get access token. [Refer this!](https://www.youtube.com/watch?v=yAXoOolPvjU)
+""")
 # st.text('________________________________________________________________________________________')
 
 
 spotify_token = st.text_input('Enter Spotify Token')
 spotify_user_id = st.text_input('Enter Spotify Username')
-artist_name = st.text_input('Enter Artist Name')
+artist_name = st.text_input('Enter Singer/Band Name')
 
 related_artists = []
 
@@ -100,8 +106,8 @@ def add_songs_to_playlist():
 if artist_name !='' and spotify_token != '' and spotify_user_id != '':
     artist_id = get_artist_id(artist_name)
     get_related_artists(artist_id)
-    st.markdown("Related Artists:")
-    st.markdown(related_artists)
+    # st.markdown("Related Artists:")
+    # st.markdown(related_artists)
 
     button = st.button(f'Create Spotify Playlist With Top Tracks of {artist_name}')
     if button:
