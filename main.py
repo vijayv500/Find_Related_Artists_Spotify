@@ -8,9 +8,9 @@ st.subheader("Create a Spotify playlist with top tracks of any singer/band")
 
 st.markdown("""
 * Enter the details below and click the button that prompts you to create a playlist.
-* You need Spotify developer account to get access token. [Refer this!](https://www.youtube.com/watch?v=yAXoOolPvjU)
+* Related artists/bands will also be displayed.
+* You need Spotify developer account to get access token. [Refer to this!](https://www.youtube.com/watch?v=yAXoOolPvjU)
 """)
-# st.text('________________________________________________________________________________________')
 
 
 spotify_token = st.text_input('Enter Spotify Token')
@@ -106,14 +106,16 @@ def add_songs_to_playlist():
 if artist_name !='' and spotify_token != '' and spotify_user_id != '':
     artist_id = get_artist_id(artist_name)
     get_related_artists(artist_id)
-    # st.markdown("Related Artists:")
-    # st.markdown(related_artists)
+
 
     button = st.button(f'Create Spotify Playlist With Top Tracks of {artist_name}')
     if button:
         uris = get_top_tracks()
         playlist_id = create_playlist()
         add_songs_to_playlist()
+
+    st.markdown("Related Artists:")
+    st.markdown(related_artists)
 
 st.sidebar.markdown("""
         * [Github Repo](https://github.com/vijayv500/Find_Related_Artists_Spotify)
